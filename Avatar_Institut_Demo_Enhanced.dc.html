@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avatar Institut – Metaphysical Sciences Academy</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Institut – Metaphysical Sciences Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Design tokens ── */
+:root {
+  --green: #1F4D3A;
+  --green-light: #E8F0EA;
+  --green-muted: #D7E3DB;
+  --black: #0F0F0F;
+  --gray: #4A4A4A;
+  --gray-light: #CCCCCC;
+  --white: #FFFFFF;
+  --radius-sm: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 2px 8px rgba(31, 77, 58, 0.06);
+  --shadow-md: 0 8px 32px rgba(31, 77, 58, 0.10);
+  --shadow-lg: 0 16px 48px rgba(31, 77, 58, 0.12);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 76px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+.section { padding: 100px 0; min-height: calc(100vh - var(--header-h)); display: flex; align-items: center; }
+.section-inner { width: 100%; }
+
+/* ── Pages & transitions ── */
+.page { display: none; }
+.page.active {
+  display: block;
+  animation: pageFadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Typography ── */
+.eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--green);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.title-xl {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 68px);
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.title-lg {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 24px;
+}
+.title-md {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+.title-sm {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+.tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  color: var(--black);
+  font-style: italic;
+  margin-bottom: 32px;
+}
+.text-body {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.85;
+}
+.text-center { text-align: center; }
+.text-muted { color: var(--gray); font-size: 14px; }
+
+/* ── Header ── */
+.site-header {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--green-muted);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: box-shadow var(--transition);
+}
+.site-header.scrolled { box-shadow: var(--shadow-sm); }
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: var(--header-h);
+}
+.brand { display: flex; align-items: center; gap: 16px; cursor: pointer; flex-shrink: 0; }
+.brand-ar {
+  font-family: 'Cairo', sans-serif;
+  font-size: 13px;
+  color: var(--black);
+  font-weight: 700;
+  direction: rtl;
+  text-align: right;
+}
+.brand-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: var(--green);
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* ── Nav ── */
+.main-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex: 1;
+  margin-inline-start: 48px;
+}
+.nav-link {
+  font-size: 12px;
+  color: var(--gray);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--green); }
+.nav-link.active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+  font-weight: 600;
+}
+.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+/* ── Mobile menu ── */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--green-muted);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  color: var(--green);
+}
+.menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--green);
+  margin: 4px 0;
+  transition: var(--transition);
+  border-radius: 2px;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--green-muted);
+  padding: 20px 24px 28px;
+  z-index: 999;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow-md);
+  animation: pageFadeIn 0.3s ease;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav .nav-link {
+  padding: 12px 16px;
+  border-bottom: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+.mobile-nav .nav-link:hover,
+.mobile-nav .nav-link.active {
+  background: var(--green-light);
+  border-bottom: none;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.8px;
+  transition: all var(--transition);
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(31, 77, 58, 0.25);
+}
+.btn-primary:hover {
+  background: #173d2e;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(31, 77, 58, 0.32);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+}
+.btn-outline:hover {
+  background: var(--green-light);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green-muted);
+  padding: 10px 16px;
+}
+.btn-ghost:hover { background: var(--green-light); }
+.btn-sm { padding: 9px 18px; font-size: 11px; }
+.btn-block { width: 100%; }
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--green-muted);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.card-accent {
+  background: var(--green-light);
+  border: 1px solid transparent;
+  border-inline-start: 4px solid var(--green);
+}
+.card-flat {
+  background: var(--green-light);
+  border: none;
+  border-top: 4px solid var(--green);
+}
+.card-highlight {
+  background: linear-gradient(135deg, var(--green-light) 0%, var(--white) 100%);
+  border: 1px solid var(--green-muted);
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.badge-green { background: var(--green-light); color: var(--green); }
+.badge-gold { background: #F5F0E6; color: #8B6914; }
+.badge-blue { background: #E8F0F8; color: #2C5282; }
+.badge-orange { background: #FFF3E6; color: #C05621; }
+
+/* ── Grids ── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ── Hero ── */
+.hero {
+  padding: 120px 0 80px;
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbf9 100%);
+  text-align: center;
+}
+.hero-desc { max-width: 650px; margin: 0 auto 40px; }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+.stats-bar {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 48px;
+  border-top: 1px solid var(--green-muted);
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--green);
+}
+.stat-label { font-size: 12px; color: var(--gray); margin-top: 6px; }
+.stat-divider { width: 1px; height: 48px; background: var(--green-muted); }
+
+/* ── Flow steps ── */
+.flow-step {
+  position: relative;
+  text-align: center;
+  padding: 28px 20px;
+}
+.flow-num {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 4px 12px rgba(31, 77, 58, 0.3);
+}
+.flow-icon { font-size: 28px; margin-bottom: 12px; }
+
+/* ── Dashboard ── */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.kpi-grid { margin-bottom: 32px; }
+.kpi-card {
+  background: var(--white);
+  border: 1px solid var(--green-muted);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.kpi-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+.kpi-label { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.8px; }
+.kpi-trend { font-size: 12px; color: #2D8A4E; margin-top: 8px; font-weight: 500; }
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--green-muted);
+  box-shadow: var(--shadow-sm);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table th {
+  background: var(--green-light);
+  color: var(--green);
+  font-weight: 600;
+  text-align: start;
+  padding: 14px 18px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 14px 18px;
+  border-top: 1px solid var(--green-muted);
+  color: var(--gray);
+}
+.data-table tr:hover td { background: #fafcfb; }
+.demo-banner {
+  background: linear-gradient(135deg, var(--green) 0%, #2A6B4F 100%);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 16px 24px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.demo-banner-icon {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Form ── */
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-label { font-size: 13px; font-weight: 500; color: var(--black); }
+.form-input,
+.form-textarea {
+  padding: 14px 16px;
+  border: 1px solid var(--green-muted);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  background: var(--white);
+  width: 100%;
+}
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(31, 77, 58, 0.12);
+}
+.form-textarea { resize: vertical; min-height: 140px; }
+.form-stack { display: flex; flex-direction: column; gap: 20px; }
+.form-success {
+  background: var(--green-light);
+  border: 1px solid var(--green-muted);
+  border-inline-start: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--green);
+  animation: pageFadeIn 0.4s ease;
+}
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--black);
+  color: var(--white);
+  padding: 60px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-bottom: 40px;
+}
+.footer-heading {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+.footer-text { font-size: 13px; color: var(--gray-light); line-height: 1.8; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-size: 13px;
+  color: var(--gray-light);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--white); }
+.social-links { display: flex; gap: 10px; }
+.social-link {
+  width: 38px; height: 38px;
+  background: var(--green);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+.social-link:hover { background: #2A6B4F; transform: translateY(-2px); }
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy { font-size: 12px; color: #999; }
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--green);
+  letter-spacing: 1px;
+}
+
+/* ── Utilities ── */
+.mb-8  { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.mb-48 { margin-bottom: 48px; }
+.mb-60 { margin-bottom: 60px; }
+.mt-24 { margin-top: 24px; }
+.gap-section { margin-bottom: 48px; }
+.flex-center { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.max-w-800 { max-width: 800px; margin-left: auto; margin-right: auto; }
+.max-w-900 { max-width: 900px; margin-left: auto; margin-right: auto; }
+.hidden { display: none !important; }
+
+/* ── RTL support ── */
+[dir="rtl"] .main-nav { margin-inline-start: 0; margin-inline-end: 48px; }
+[dir="rtl"] .card-accent { border-inline-start: 4px solid var(--green); border-inline-end: none; }
+[dir="rtl"] .form-success { border-inline-start: 4px solid var(--green); }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .main-nav { display: none; }
+  .menu-toggle { display: block; }
+  .header-actions .btn-primary { display: none; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .container, .container-wide { padding: 0 20px; }
+  .header-inner { padding: 12px 20px; }
+  .section { padding: 72px 0; }
+  .hero { padding: 80px 0 60px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stats-bar { gap: 24px; }
+  .stat-divider { display: none; }
+  .dashboard-header { flex-direction: column; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn { width: 100%; max-width: 320px; }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .card { padding: 24px; }
+}
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="brand" onclick="{{ goHome }}">
+      <svg width="48" height="62" viewBox="0 0 90 114" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="42" r="32" fill="none" stroke="#1F4D3A" stroke-width="1.3"/>
+        <circle cx="45" cy="42" r="4.5" fill="#1F4D3A"/>
+        <line x1="10" y1="84" x2="80" y2="84" stroke="#1F4D3A" stroke-width="0.4" opacity="0.5"/>
+        <text x="45" y="96" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8.5" letter-spacing="3" fill="#0F0F0F">AVATAR INSTITUT</text>
+        <text x="45" y="110" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="6.5" letter-spacing="1.2" fill="#4A4A4A">FÜR METAPHYSIK</text>
+      </svg>
+      <div>
+        <div class="brand-ar">{{ logo }}</div>
+        <div class="brand-sub">{{ logoSub }}</div>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a class="{{ navHome }}" onclick="{{ goHome }}">{{ home }}</a>
+      <a class="{{ navAbout }}" onclick="{{ goAbout }}">{{ about }}</a>
+      <a class="{{ navVision }}" onclick="{{ goVision }}">{{ vision }}</a>
+      <a class="{{ navFlow }}" onclick="{{ goFlow }}">{{ flow }}</a>
+      <a class="{{ navServices }}" onclick="{{ goServices }}">{{ services }}</a>
+      <a class="{{ navDashboard }}" onclick="{{ goDashboard }}">{{ dashboard }}</a>
+      <a class="{{ navContact }}" onclick="{{ goContact }}">{{ contact }}</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="menu-toggle" onclick="{{ toggleMenu }}" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="btn btn-ghost btn-sm" onclick="{{ toggleLang }}">{{ langBtn }}</button>
+      <button class="btn btn-primary btn-sm" onclick="{{ goContact }}">{{ ctaConsult }}</button>
+    </div>
+  </div>
+
+  <nav class="{{ mobileNavClass }}">
+    <a class="{{ navHome }}" onclick="{{ goHomeMobile }}">{{ home }}</a>
+    <a class="{{ navAbout }}" onclick="{{ goAboutMobile }}">{{ about }}</a>
+    <a class="{{ navVision }}" onclick="{{ goVisionMobile }}">{{ vision }}</a>
+    <a class="{{ navFlow }}" onclick="{{ goFlowMobile }}">{{ flow }}</a>
+    <a class="{{ navServices }}" onclick="{{ goServicesMobile }}">{{ services }}</a>
+    <a class="{{ navDashboard }}" onclick="{{ goDashboardMobile }}">{{ dashboard }}</a>
+    <a class="{{ navContact }}" onclick="{{ goContactMobile }}">{{ contact }}</a>
+    <button class="btn btn-primary btn-block mt-24" onclick="{{ goContactMobile }}">{{ ctaConsult }}</button>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section class="page active" id="home">
+  <div class="hero">
+    <div class="container section-inner">
+      <div class="eyebrow">{{ homeSubtitle }}</div>
+      <h1 class="title-xl">{{ homeTitle }}</h1>
+      <h2 class="tagline">{{ homeTagline }}</h2>
+      <p class="text-body hero-desc">{{ homeDesc }}</p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="{{ goDashboard }}">{{ ctaDemo }}</button>
+        <button class="btn btn-outline" onclick="{{ goServices }}">{{ ctaPrograms }}</button>
+        <button class="btn btn-outline" onclick="{{ goContact }}">{{ ctaConsult }}</button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">{{ cred1 }}</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">45</div>
+          <div class="stat-label">{{ cred2 }}</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">{{ cred3 }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="about">
+  <div class="section">
+    <div class="container max-w-900 section-inner">
+      <h2 class="title-lg text-center">{{ aboutTitle }}</h2>
+      <p class="text-body mb-24">{{ aboutText1 }}</p>
+      <p class="text-body mb-24">{{ aboutText2 }}</p>
+      <p class="text-body mb-32">{{ aboutText3 }}</p>
+
+      <div class="card card-accent">
+        <h3 class="title-sm">{{ coreIdea }}</h3>
+        <p class="text-body">{{ coreIdeaText }}</p>
+      </div>
+
+      <div class="flex-center mt-24">
+        <button class="btn btn-primary" onclick="{{ goDashboard }}">{{ ctaDemo }}</button>
+        <button class="btn btn-outline" onclick="{{ goServices }}">{{ ctaPrograms }}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="page" id="vision">
+  <div class="section">
+    <div class="container section-inner">
+      <h2 class="title-lg text-center">{{ visionTitle }}</h2>
+      <p class="text-body text-center mb-60 max-w-800">{{ visionSubtitle }}</p>
+
+      <div class="grid-2 gap-section">
+        <div class="card card-flat">
+          <h3 class="title-sm">{{ missionTitle }}</h3>
+          <p class="text-body">{{ missionText }}</p>
+        </div>
+        <div class="card">
+          <h3 class="title-sm">{{ visionDesc }}</h3>
+          <p class="text-body">{{ visionText }}</p>
+        </div>
+      </div>
+
+      <h3 class="title-md text-center mb-32">{{ coreValuesTitle }}</h3>
+      <div class="grid-4">
+        <div class="card card-accent">
+          <div class="badge badge-green mb-8">{{ val1 }}</div>
+          <p class="text-muted">{{ val1d }}</p>
+        </div>
+        <div class="card card-accent">
+          <div class="badge badge-green mb-8">{{ val2 }}</div>
+          <p class="text-muted">{{ val2d }}</p>
+        </div>
+        <div class="card card-accent">
+          <div class="badge badge-green mb-8">{{ val3 }}</div>
+          <p class="text-muted">{{ val3d }}</p>
+        </div>
+        <div class="card card-accent">
+          <div class="badge badge-green mb-8">{{ val4 }}</div>
+          <p class="text-muted">{{ val4d }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO FLOW -->
+<section class="page" id="flow">
+  <div class="section">
+    <div class="container section-inner">
+      <div class="eyebrow text-center">{{ flowSubtitle }}</div>
+      <h2 class="title-lg text-center">{{ flowTitle }}</h2>
+      <p class="text-body text-center mb-60 max-w-800">{{ flowDesc }}</p>
+
+      <div class="grid-3 gap-section mb-48">
+        <div class="card flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-icon">📚</div>
+          <h3 class="title-sm">{{ flowStep1 }}</h3>
+          <p class="text-muted">{{ flowStep1d }}</p>
+        </div>
+        <div class="card flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-icon">🤝</div>
+          <h3 class="title-sm">{{ flowStep2 }}</h3>
+          <p class="text-muted">{{ flowStep2d }}</p>
+        </div>
+        <div class="card flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-icon">🌐</div>
+          <h3 class="title-sm">{{ flowStep3 }}</h3>
+          <p class="text-muted">{{ flowStep3d }}</p>
+        </div>
+        <div class="card flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-icon">📖</div>
+          <h3 class="title-sm">{{ flowStep4 }}</h3>
+          <p class="text-muted">{{ flowStep4d }}</p>
+        </div>
+        <div class="card flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-icon">💎</div>
+          <h3 class="title-sm">{{ flowStep5 }}</h3>
+          <p class="text-muted">{{ flowStep5d }}</p>
+        </div>
+        <div class="card card-highlight flow-step">
+          <div class="flow-num">✓</div>
+          <div class="flow-icon">🎓</div>
+          <h3 class="title-sm">{{ flowStep6 }}</h3>
+          <p class="text-muted">{{ flowStep6d }}</p>
+        </div>
+      </div>
+
+      <div class="flex-center">
+        <button class="btn btn-primary" onclick="{{ goDashboard }}">{{ ctaDemo }}</button>
+        <button class="btn btn-outline" onclick="{{ goServices }}">{{ ctaPrograms }}</button>
+        <button class="btn btn-outline" onclick="{{ goContact }}">{{ ctaConsult }}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="page" id="services">
+  <div class="section">
+    <div class="container section-inner">
+      <h2 class="title-lg text-center mb-60">{{ servicesTitle }}</h2>
+      <div class="grid-2">
+        <div class="card card-accent">
+          <span class="badge badge-green mb-16">{{ srv1Badge }}</span>
+          <h3 class="title-sm">{{ srv1 }}</h3>
+          <p class="text-body mb-24">{{ srv1d }}</p>
+          <button class="btn btn-primary btn-sm" onclick="{{ goDashboard }}">{{ ctaDemo }}</button>
+        </div>
+        <div class="card card-accent">
+          <span class="badge badge-gold mb-16">{{ srv2Badge }}</span>
+          <h3 class="title-sm">{{ srv2 }}</h3>
+          <p class="text-body mb-24">{{ srv2d }}</p>
+          <button class="btn btn-outline btn-sm" onclick="{{ goServices }}">{{ ctaPrograms }}</button>
+        </div>
+        <div class="card card-accent">
+          <span class="badge badge-blue mb-16">{{ srv3Badge }}</span>
+          <h3 class="title-sm">{{ srv3 }}</h3>
+          <p class="text-body mb-24">{{ srv3d }}</p>
+          <button class="btn btn-primary btn-sm" onclick="{{ goContact }}">{{ ctaConsult }}</button>
+        </div>
+        <div class="card card-accent">
+          <span class="badge badge-orange mb-16">{{ srv4Badge }}</span>
+          <h3 class="title-sm">{{ srv4 }}</h3>
+          <p class="text-body mb-24">{{ srv4d }}</p>
+          <button class="btn btn-outline btn-sm" onclick="{{ goVision }}">{{ homeBtn2 }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD DEMO -->
+<section class="page" id="dashboard">
+  <div class="section">
+    <div class="container section-inner">
+      <div class="demo-banner">
+        <div class="demo-banner-icon">⚡</div>
+        <div>{{ dashboardBanner }}</div>
+      </div>
+
+      <div class="dashboard-header">
+        <div>
+          <div class="eyebrow">{{ dashboardSubtitle }}</div>
+          <h2 class="title-lg" style="margin-bottom:4px;">{{ dashboardTitle }}</h2>
+          <p class="text-muted">{{ dashboardDesc }}</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="{{ goContact }}">{{ ctaConsult }}</button>
+      </div>
+
+      <div class="grid-4 kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">524</div>
+          <div class="kpi-label">{{ kpiStudents }}</div>
+          <div class="kpi-trend">↑ 12% {{ kpiThisMonth }}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">18</div>
+          <div class="kpi-label">{{ kpiPrograms }}</div>
+          <div class="kpi-trend">3 {{ kpiNew }}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">47</div>
+          <div class="kpi-label">{{ kpiConsultations }}</div>
+          <div class="kpi-trend">↑ 8 {{ kpiPending }}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">23</div>
+          <div class="kpi-label">{{ kpiRequests }}</div>
+          <div class="kpi-trend">5 {{ kpiUrgent }}</div>
+        </div>
+      </div>
+
+      <div class="grid-2 gap-section">
+        <div>
+          <h3 class="title-sm mb-16">{{ tableStudents }}</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>{{ colName }}</th>
+                  <th>{{ colProgram }}</th>
+                  <th>{{ colStatus }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Sarah Al-Rashid</td><td>Consciousness Studies</td><td><span class="badge badge-green">{{ statusActive }}</span></td></tr>
+                <tr><td>James Mitchell</td><td>Metaphysics Foundations</td><td><span class="badge badge-green">{{ statusActive }}</span></td></tr>
+                <tr><td>Fatima Hassan</td><td>Quantum Awareness</td><td><span class="badge badge-gold">{{ statusPending }}</span></td></tr>
+                <tr><td>Elena Vogt</td><td>Leadership & Wisdom</td><td><span class="badge badge-green">{{ statusActive }}</span></td></tr>
+                <tr><td>Omar Khalil</td><td>Spiritual Development</td><td><span class="badge badge-blue">{{ statusReview }}</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3 class="title-sm mb-16">{{ tableRequests }}</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>{{ colApplicant }}</th>
+                  <th>{{ colType }}</th>
+                  <th>{{ colDate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Amina Benali</td><td>{{ reqConsult }}</td><td>Jul 4, 2026</td></tr>
+                <tr><td>David Chen</td><td>{{ reqProgram }}</td><td>Jul 3, 2026</td></tr>
+                <tr><td>Layla Mansour</td><td>{{ reqCert }}</td><td>Jul 2, 2026</td></tr>
+                <tr><td>Thomas Weber</td><td>{{ reqConsult }}</td><td>Jul 1, 2026</td></tr>
+                <tr><td>Nadia Farouk</td><td>{{ reqFunding }}</td><td>Jun 30, 2026</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-24">
+        <h3 class="title-sm mb-16">{{ tableConsultations }}</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>{{ colClient }}</th>
+                <th>{{ colExpert }}</th>
+                <th>{{ colTopic }}</th>
+                <th>{{ colDate }}</th>
+                <th>{{ colStatus }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Maria Santos</td><td>Dr. Heinrich Bauer</td><td>Consciousness Mapping</td><td>Jul 6, 2026</td><td><span class="badge badge-green">{{ statusConfirmed }}</span></td></tr>
+              <tr><td>Youssef Alami</td><td>Prof. Elena Richter</td><td>Metaphysical Research</td><td>Jul 7, 2026</td><td><span class="badge badge-gold">{{ statusPending }}</span></td></tr>
+              <tr><td>Claire Dubois</td><td>Dr. Ahmed Nazir</td><td>Spiritual Leadership</td><td>Jul 8, 2026</td><td><span class="badge badge-green">{{ statusConfirmed }}</span></td></tr>
+              <tr><td>Khalid Rahman</td><td>Dr. Sophia Klein</td><td>Vision Book Review</td><td>Jul 9, 2026</td><td><span class="badge badge-blue">{{ statusReview }}</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="contact">
+  <div class="section">
+    <div class="container section-inner" style="max-width:640px;">
+      <h2 class="title-lg text-center mb-32">{{ contactTitle }}</h2>
+      <p class="text-body text-center mb-32">{{ contactDesc }}</p>
+
+      <div class="{{ contactSuccessClass }}">{{ contactSuccessMsg }}</div>
+
+      <form class="form-stack" onsubmit="{{ handleContactSubmit }}">
+        <div class="form-group">
+          <label class="form-label">{{ contactName }}</label>
+          <input type="text" class="form-input" placeholder="{{ contactNamePh }}" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ contactEmail }}</label>
+          <input type="email" class="form-input" placeholder="{{ contactEmailPh }}" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ contactSubject }}</label>
+          <select class="form-input">
+            <option>{{ contactOpt1 }}</option>
+            <option>{{ contactOpt2 }}</option>
+            <option>{{ contactOpt3 }}</option>
+            <option>{{ contactOpt4 }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ contactMsg }}</label>
+          <textarea class="form-textarea" placeholder="{{ contactMsgPh }}" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">{{ contactBtn }}</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="footer-grid">
+      <div>
+        <h4 class="footer-heading">{{ footerAbout }}</h4>
+        <p class="footer-text">{{ footerAboutText }}</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">{{ footerNav }}</h4>
+        <ul class="footer-links">
+          <li><a onclick="{{ goHome }}">{{ home }}</a></li>
+          <li><a onclick="{{ goAbout }}">{{ about }}</a></li>
+          <li><a onclick="{{ goVision }}">{{ vision }}</a></li>
+          <li><a onclick="{{ goFlow }}">{{ flow }}</a></li>
+          <li><a onclick="{{ goDashboard }}">{{ dashboard }}</a></li>
+          <li><a onclick="{{ goContact }}">{{ contact }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">{{ footerServices }}</h4>
+        <ul class="footer-links">
+          <li><a onclick="{{ goServices }}">{{ footerCourses }}</a></li>
+          <li><a onclick="{{ goServices }}">{{ footerCerts }}</a></li>
+          <li><a onclick="{{ goContact }}">{{ footerConsult }}</a></li>
+          <li><a onclick="{{ goFlow }}">{{ flow }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">{{ footerFollow }}</h4>
+        <div class="social-links">
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">tw</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">{{ footerCopy }}</p>
+      <p class="footer-tagline">{{ homeTagline }}</p>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    lang: 'en',
+    currentPage: 'home',
+    menuOpen: false,
+    contactSent: false
+  };
+
+  texts = {
+    en: {
+      logo: 'Avatar Institut',
+      logoSub: 'For Metaphysical Sciences',
+      home: 'HOME',
+      about: 'ABOUT',
+      vision: 'VISION',
+      flow: 'HOW IT WORKS',
+      services: 'SERVICES',
+      dashboard: 'DEMO',
+      contact: 'CONTACT',
+      langBtn: 'العربية',
+      ctaDemo: 'VIEW DEMO',
+      ctaPrograms: 'EXPLORE PROGRAMS',
+      ctaConsult: 'REQUEST CONSULTATION',
+      homeSubtitle: 'Advancing the study of metaphysics',
+      homeTitle: 'Consciousness & Leadership',
+      homeTagline: 'Where Science Meets Consciousness',
+      homeDesc: 'Avatar Institut is dedicated to developing leaders, researchers, and thinkers who integrate spiritual awareness, human wisdom, professional excellence, and ethical responsibility.',
+      homeBtn1: 'EXPLORE PROGRAMS',
+      homeBtn2: 'LEARN MORE',
+      cred1: 'Active Students',
+      cred2: 'Expert Faculty',
+      cred3: 'Research Programs',
+      aboutTitle: 'About Avatar Institut',
+      aboutText1: 'Avatar Institut für Metaphysik is a leading institution dedicated to advancing the study of consciousness, metaphysics, and human potential through rigorous academic research and transformative learning.',
+      aboutText2: 'Our faculty consists of renowned scholars, researchers, and practitioners who bring decades of experience in metaphysical sciences, quantum physics, consciousness studies, and related disciplines.',
+      aboutText3: 'We believe that the integration of ancient wisdom traditions with modern scientific inquiry offers unprecedented opportunities for understanding the nature of reality and human consciousness.',
+      coreIdea: 'Core Idea',
+      coreIdeaText: 'Nations build roads and industries, but human beings build civilizations. Investing in human development is one of the most sustainable investments a nation can make for its future.',
+      visionTitle: 'Vision & Mission',
+      visionSubtitle: 'Our commitment to developing conscious leaders and contributing to human transformation.',
+      missionTitle: 'Our Mission',
+      missionText: 'To develop leaders, entrepreneurs, researchers, and thinkers who integrate spiritual awareness, human wisdom, professional excellence, economic capacity, and ethical responsibility.',
+      visionDesc: 'Our Vision',
+      visionText: 'To become the leading international institution connecting science, consciousness, and wisdom traditions—bridging knowledge, practice, and human transformation.',
+      coreValuesTitle: 'Core Values',
+      val1: 'Wisdom', val1d: 'Deep understanding of consciousness and human nature',
+      val2: 'Knowledge', val2d: 'Rigorous academic inquiry and research',
+      val3: 'Integrity', val3d: 'Ethical leadership and responsibility',
+      val4: 'Transformation', val4d: 'Sustainable human and societal development',
+      flowSubtitle: 'Demo Flow',
+      flowTitle: 'How It Works',
+      flowDesc: 'Discover the complete Avatar Institut journey — from courses and consultations to community, vision book, and funding support.',
+      flowStep1: 'Courses', flowStep1d: 'Enroll in structured programs in metaphysics, consciousness, and spiritual development taught by world-class faculty.',
+      flowStep2: 'Consultations', flowStep2d: 'Book one-on-one sessions with expert practitioners for personalized guidance on your development path.',
+      flowStep3: 'Community', flowStep3d: 'Join a global network of researchers, leaders, and seekers sharing knowledge and transformative experiences.',
+      flowStep4: 'Vision Book', flowStep4d: 'Document and refine your personal vision through our structured framework for conscious leadership.',
+      flowStep5: 'Funding', flowStep5d: 'Access scholarship programs and institutional support for research, certification, and community initiatives.',
+      flowStep6: 'Graduation', flowStep6d: 'Earn recognized credentials and join the alumni network of conscious leaders worldwide.',
+      servicesTitle: 'Our Services',
+      srv1: 'Online Courses', srv1d: 'Comprehensive programs in metaphysics, consciousness studies, and spiritual development taught by world-class experts.',
+      srv1Badge: 'Popular',
+      srv2: 'Certifications', srv2d: 'Professional certifications recognized globally for practitioners seeking credentials in metaphysical sciences.',
+      srv2Badge: 'Accredited',
+      srv3: 'Private Consultations', srv3d: 'One-on-one guidance from our expert faculty members tailored to your personal development journey.',
+      srv3Badge: 'Personal',
+      srv4: 'Research & Events', srv4d: 'Participate in groundbreaking research initiatives and attend exclusive seminars and conferences.',
+      srv4Badge: 'Exclusive',
+      dashboardSubtitle: 'Dashboard Demo',
+      dashboardTitle: 'Institutional Overview',
+      dashboardDesc: 'Simulated data — no backend connected.',
+      dashboardBanner: 'Demo mode — all data shown is simulated for presentation purposes. No backend connected.',
+      kpiStudents: 'Students', kpiPrograms: 'Programs', kpiConsultations: 'Consultations', kpiRequests: 'Requests Received',
+      kpiThisMonth: 'this month', kpiNew: 'new this quarter', kpiPending: 'pending this week', kpiUrgent: 'urgent',
+      tableStudents: 'Recent Students', tableRequests: 'Incoming Requests', tableConsultations: 'Upcoming Consultations',
+      colName: 'Name', colProgram: 'Program', colStatus: 'Status', colApplicant: 'Applicant', colType: 'Type',
+      colDate: 'Date', colClient: 'Client', colExpert: 'Expert', colTopic: 'Topic',
+      statusActive: 'Active', statusPending: 'Pending', statusReview: 'In Review', statusConfirmed: 'Confirmed',
+      reqConsult: 'Consultation', reqProgram: 'Program Enrollment', reqCert: 'Certification', reqFunding: 'Funding Request',
+      contactTitle: 'Get in Touch',
+      contactDesc: 'Send us a message — in demo mode, your submission will be simulated locally.',
+      contactName: 'Full Name', contactNamePh: 'Your full name',
+      contactEmail: 'Email Address', contactEmailPh: 'your@email.com',
+      contactSubject: 'Subject', contactMsg: 'Message', contactMsgPh: 'Tell us about your inquiry…',
+      contactOpt1: 'Program Inquiry', contactOpt2: 'Consultation Request', contactOpt3: 'Certification', contactOpt4: 'General Question',
+      contactBtn: 'SEND MESSAGE',
+      contactSuccessMsg: 'Your message has been prepared — demo without backend.',
+      footerAbout: 'About',
+      footerAboutText: 'Avatar Institut is dedicated to bridging consciousness and science through rigorous inquiry and human transformation.',
+      footerNav: 'Navigation', footerServices: 'Services',
+      footerCourses: 'Online Courses', footerCerts: 'Certifications', footerConsult: 'Consultations', footerEvents: 'Events',
+      footerFollow: 'Follow',
+      footerCopy: '© 2026 Avatar Institut für Metaphysik. All rights reserved.'
+    },
+    ar: {
+      logo: 'معهد أفاتار',
+      logoSub: 'للعلوم الميتافيزيقية',
+      home: 'الرئيسية',
+      about: 'من نحن',
+      vision: 'الرؤية',
+      flow: 'كيف يعمل',
+      services: 'الخدمات',
+      dashboard: 'عرض تجريبي',
+      contact: 'اتصل بنا',
+      langBtn: 'English',
+      ctaDemo: 'شاهد العرض التوضيحي',
+      ctaPrograms: 'استكشف البرامج',
+      ctaConsult: 'اطلب استشارة',
+      homeSubtitle: 'متقدمون في دراسة الميتافيزيقا',
+      homeTitle: 'الوعي والقيادة',
+      homeTagline: 'حيث يلتقي العلم بالوعي',
+      homeDesc: 'معهد أفاتار مكرس لتطوير قادة وباحثين ومفكرين يجمعون بين الوعي الروحي والحكمة الإنسانية والتميز المهني والمسؤولية الأخلاقية.',
+      homeBtn1: 'استكشف البرامج',
+      homeBtn2: 'تعرف على المزيد',
+      cred1: 'طلاب نشطون',
+      cred2: 'أعضاء هيئة التدريس',
+      cred3: 'برامج بحثية',
+      aboutTitle: 'عن معهد أفاتار',
+      aboutText1: 'معهد أفاتار للعلوم الميتافيزيقية مؤسسة رائدة مكرسة لتقدم دراسة الوعي والميتافيزيقا والإمكانات البشرية من خلال البحث الأكاديمي الصارم والتعلم التحويلي.',
+      aboutText2: 'تتكون هيئة التدريس لدينا من علماء وباحثين وممارسين مرموقين يجمعون عقوداً من الخبرة في العلوم الميتافيزيقية والفيزياء الكمية ودراسات الوعي والتخصصات ذات الصلة.',
+      aboutText3: 'نؤمن بأن دمج تقاليد الحكمة القديمة مع البحث العلمي الحديث يفتح آفاقاً غير مسبوقة لفهم طبيعة الواقع والوعي البشري.',
+      coreIdea: 'الفكرة الجوهرية',
+      coreIdeaText: 'الدول تبني الطرق والصناعات، لكن الإنسان يبني الحضارات. الاستثمار في تنمية الإنسان من أكثر الاستثمارات استدامة لمستقبل أي أمة.',
+      visionTitle: 'الرؤية والرسالة',
+      visionSubtitle: 'التزامنا بتطوير قادة واعين والمساهمة في التحول الإنساني.',
+      missionTitle: 'رسالتنا',
+      missionText: 'تطوير قادة وروّاد أعمال وباحثين ومفكرين يجمعون بين الوعي الروحي والحكمة الإنسانية والتميز المهني والقدرة الاقتصادية والمسؤولية الأخلاقية.',
+      visionDesc: 'رؤيتنا',
+      visionText: 'أن نصبح المؤسسة الدولية الرائدة التي تربط العلم والوعي وتقاليد الحكمة — جسراً بين المعرفة والممارسة والتحول الإنساني.',
+      coreValuesTitle: 'القيم الأساسية',
+      val1: 'الحكمة', val1d: 'فهم عميق للوعي والطبيعة الإنسانية',
+      val2: 'المعرفة', val2d: 'بحث أكاديمي دقيق واستقصاء علمي',
+      val3: 'النزاهة', val3d: 'قيادة أخلاقية ومسؤولية',
+      val4: 'التحول', val4d: 'تنمية إنسانية ومجتمعية مستدامة',
+      flowSubtitle: 'مسار العرض التوضيحي',
+      flowTitle: 'كيف يعمل',
+      flowDesc: 'اكتشف رحلة معهد أفاتار الكاملة — من الدورات والاستشارات إلى المجتمع وكتاب الرؤية ودعم التمويل.',
+      flowStep1: 'الدورات', flowStep1d: 'سجّل في برامج منظمة في الميتافيزيقا والوعي والتطور الروحي يقدّمها نخبة من الأساتذة.',
+      flowStep2: 'الاستشارات', flowStep2d: 'احجز جلسات فردية مع خبراء للحصول على إرشاد شخصي في مسار تطورك.',
+      flowStep3: 'المجتمع', flowStep3d: 'انضم إلى شبكة عالمية من الباحثين والقادة والباحثين عن المعرفة يتبادلون الخبرات التحويلية.',
+      flowStep4: 'كتاب الرؤية', flowStep4d: 'وثّق رؤيتك الشخصية وطوّرها عبر إطارنا المنظم للقيادة الواعية.',
+      flowStep5: 'التمويل', flowStep5d: 'استفد من برامج المنح والدعم المؤسسي للبحث والشهادات والمبادرات المجتمعية.',
+      flowStep6: 'التخرج', flowStep6d: 'احصل على شهادات معترف بها وانضم إلى شبكة خريجين القادة الواعين حول العالم.',
+      servicesTitle: 'خدماتنا',
+      srv1: 'الدورات الإلكترونية', srv1d: 'برامج شاملة في الميتافيزيقا ودراسات الوعي والتطور الروحي يدرّسها خبراء من الطراز الأول.',
+      srv1Badge: 'الأكثر طلباً',
+      srv2: 'الشهادات', srv2d: 'شهادات مهنية معترف بها عالمياً للممارسين الراغبين في الاعتماد في العلوم الميتافيزيقية.',
+      srv2Badge: 'معتمد',
+      srv3: 'استشارات خاصة', srv3d: 'إرشاد فردي من أعضاء هيئة التدريس الخبراء، مصمّم لرحلة تطورك الشخصي.',
+      srv3Badge: 'شخصي',
+      srv4: 'البحث والفعاليات', srv4d: 'شارك في مبادرات بحثية رائدة واحضر ندوات ومؤتمرات حصرية.',
+      srv4Badge: 'حصري',
+      dashboardSubtitle: 'لوحة تحكم تجريبية',
+      dashboardTitle: 'نظرة مؤسسية',
+      dashboardDesc: 'بيانات محاكاة — لا يوجد خادم متصل.',
+      dashboardBanner: 'وضع العرض التوضيحي — جميع البيانات المعروضة محاكاة لأغراض العرض. لا يوجد خادم متصل.',
+      kpiStudents: 'الطلاب', kpiPrograms: 'البرامج', kpiConsultations: 'الاستشارات', kpiRequests: 'الطلبات الواردة',
+      kpiThisMonth: 'هذا الشهر', kpiNew: 'جديد هذا الربع', kpiPending: 'معلّقة هذا الأسبوع', kpiUrgent: 'عاجلة',
+      tableStudents: 'الطلاب الجدد', tableRequests: 'الطلبات الواردة', tableConsultations: 'الاستشارات القادمة',
+      colName: 'الاسم', colProgram: 'البرنامج', colStatus: 'الحالة', colApplicant: 'مقدّم الطلب', colType: 'النوع',
+      colDate: 'التاريخ', colClient: 'العميل', colExpert: 'الخبير', colTopic: 'الموضوع',
+      statusActive: 'نشط', statusPending: 'معلّق', statusReview: 'قيد المراجعة', statusConfirmed: 'مؤكّد',
+      reqConsult: 'استشارة', reqProgram: 'تسجيل برنامج', reqCert: 'شهادة', reqFunding: 'طلب تمويل',
+      contactTitle: 'تواصل معنا',
+      contactDesc: 'أرسل لنا رسالة — في وضع العرض التوضيحي، سيتم محاكاة الإرسال محلياً.',
+      contactName: 'الاسم الكامل', contactNamePh: 'اسمك الكامل',
+      contactEmail: 'البريد الإلكتروني', contactEmailPh: 'your@email.com',
+      contactSubject: 'الموضوع', contactMsg: 'الرسالة', contactMsgPh: 'أخبرنا عن استفسارك…',
+      contactOpt1: 'استفسار عن برنامج', contactOpt2: 'طلب استشارة', contactOpt3: 'شهادة', contactOpt4: 'سؤال عام',
+      contactBtn: 'إرسال الرسالة',
+      contactSuccessMsg: 'تم تجهيز رسالتك — عرض توضيحي بدون خادم.',
+      footerAbout: 'عن المعهد',
+      footerAboutText: 'معهد أفاتار مكرس لربط الوعي والعلم من خلال البحث الدقيق والتحول الإنساني.',
+      footerNav: 'التنقل', footerServices: 'الخدمات',
+      footerCourses: 'الدورات الإلكترونية', footerCerts: 'الشهادات', footerConsult: 'الاستشارات', footerEvents: 'الفعاليات',
+      footerFollow: 'تابعنا',
+      footerCopy: '© 2026 معهد أفاتار للعلوم الميتافيزيقية. جميع الحقوق محفوظة.'
+    }
+  };
+
+  navClass(page) {
+    return this.state.currentPage === page ? 'nav-link active' : 'nav-link';
+  }
+
+  switchPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(pageId);
+    if (target) {
+      target.classList.remove('active');
+      void target.offsetWidth;
+      target.classList.add('active');
+    }
+    this.setState({ currentPage: pageId, menuOpen: false });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    const t = this.texts[this.state.lang];
+
+    return {
+      ...t,
+      navHome: this.navClass('home'),
+      navAbout: this.navClass('about'),
+      navVision: this.navClass('vision'),
+      navFlow: this.navClass('flow'),
+      navServices: this.navClass('services'),
+      navDashboard: this.navClass('dashboard'),
+      navContact: this.navClass('contact'),
+      mobileNavClass: this.state.menuOpen ? 'mobile-nav open' : 'mobile-nav',
+      contactSuccessClass: this.state.contactSent ? 'form-success mb-24' : 'hidden',
+      contactSuccessMsg: t.contactSuccessMsg,
+      goHome: () => this.switchPage('home'),
+      goAbout: () => this.switchPage('about'),
+      goVision: () => this.switchPage('vision'),
+      goFlow: () => this.switchPage('flow'),
+      goServices: () => this.switchPage('services'),
+      goDashboard: () => this.switchPage('dashboard'),
+      goContact: () => this.switchPage('contact'),
+      goHomeMobile: () => this.switchPage('home'),
+      goAboutMobile: () => this.switchPage('about'),
+      goVisionMobile: () => this.switchPage('vision'),
+      goFlowMobile: () => this.switchPage('flow'),
+      goServicesMobile: () => this.switchPage('services'),
+      goDashboardMobile: () => this.switchPage('dashboard'),
+      goContactMobile: () => this.switchPage('contact'),
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      toggleLang: () => {
+        const newLang = this.state.lang === 'en' ? 'ar' : 'en';
+        this.setState({ lang: newLang });
+        localStorage.setItem('avatarLang', newLang);
+        document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.lang = newLang;
+      },
+      handleContactSubmit: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        this.setState({ contactSent: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+  }
+
+  componentDidMount() {
+    const saved = localStorage.getItem('avatarLang') || 'en';
+    this.setState({ lang: saved });
+    document.documentElement.dir = saved === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = saved;
+
+    const header = document.getElementById('siteHeader');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+    }
+  }
+}
+</script>
+</body>
+</html>
